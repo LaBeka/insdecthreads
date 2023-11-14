@@ -15,36 +15,28 @@ public class IncDecThreads{
         public void run() {
             for (int i = 0; i < COUNT; i++) {
                 try {
-                    Thread.sleep(3);
+                    Thread.sleep(0);
                 } catch (InterruptedException e) {
                     System.out.println("Thread has been interrupted");
                 }
-                String str = String.format("%s: %s: %s\n", this.getClass().getSimpleName(), name, --value);
-                System.out.print(str);
+                System.out.printf("%s: %s: %s\n", this.getClass().getSimpleName(), name, --value);
             }
-        }//A thread class that is described through an implementation of the Runnable interface. Its task in the loop at
-        // each iteration is to decrease by 1 and display the value of the value variable in the console. The names of
-        // the class and the thread are also printed to the console.
+        }
     }
 
     static class Increment extends Thread{
         public void run(){
-
             for (int i = 0; i < COUNT; i++) {
                 try{
-                    Thread.sleep(3);
+                    Thread.sleep(0);
                 }
                 catch(InterruptedException e){
                     System.out.println("Thread has been interrupted");
                 }
-                String str = String.format("%s: %s: %s\n", this.getClass().getSimpleName(), Thread.currentThread().getName(), ++value);
-                System.out.print(str);
+                System.out.printf("%s: %s: %s\n", this.getClass().getSimpleName(), Thread.currentThread().getName(), ++value);
             }
 
         }
-        // Its task in the loop at each iteration is to
-        // increase by 1 and output the value of the value variable to the console. The names of the class and the thread
-        // are also printed to the console.
     }
     public static void main(String[] args) {
         new Increment().start();
